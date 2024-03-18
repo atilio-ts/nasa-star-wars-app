@@ -16,7 +16,6 @@ export class StarWarsController {
     try {
       const type = req.query.type?.toString() ?? "";
       const name = req.query.name?.toString() ?? "";
-
       await StarWarsValidator.getSwapiDataSchema.validate({type, name}, validatorOptions);
 
       let swapiData = await StarWarsService.getSwapiData(type, name);

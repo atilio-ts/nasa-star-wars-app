@@ -5,6 +5,8 @@ import HText from "../shared/HText";
 import { useState } from "react";
 import axios from "axios";
 
+const SWAPI_URL = import.meta.env.VITE_SWAPI_URL;
+
 type Props = {
   setSelectedPage: (value: SelectedPage) => void;
 };
@@ -18,10 +20,10 @@ const ContactUs = ({ setSelectedPage }: Props) => {
   async function getStarwarsData(){
     if(searchName){
       setSearchNameError(false);
-      setSearchType("starship");
-      const response = await axios.get(`http://localhost:3001/api/starWars/search?type=${searchType}?name=${searchName}`);
-      console.log(response.data.data[0])
-      setSwapiData(response.data?.data[0]);
+      setSearchType("starships");
+      const response = await axios.get(`${SWAPI_URL}?type=${searchType}&name=${searchName}`);
+      console.log(response.data.data);
+      setSwapiData(response.data.data);
     }else setSearchNameError(true);
   }
 
@@ -52,7 +54,7 @@ const ContactUs = ({ setSelectedPage }: Props) => {
           </p>
         </motion.div>
 
-        {/* FORM AND IMAGE */}
+        {/* FORM AND CANVAS */}
         <div className="mt-10 justify-between gap-8 md:flex">
           <motion.div
             className="mt-10 basis-3/5 md:mt-0"
@@ -85,9 +87,17 @@ const ContactUs = ({ setSelectedPage }: Props) => {
                   Search
               </button>
 
-              <div>
-                Complete name: {swapiData?.name}
-              </div>
+              { swapiData && 
+                <div>
+                  { swapiData.name && <p>name: {swapiData.name}</p> }
+                  { swapiData.manufacturer && <p>manufacturer: {swapiData.manufacturer}</p> }
+                  { swapiData.gender && <p>gender: {swapiData.gender}</p> }
+                  { swapiData.height && <p>height: {swapiData.height}</p> }
+                  { swapiData.mass && <p>mass: {swapiData.mass}</p> }
+                  { swapiData.model && <p>model: {swapiData.model}</p> }
+                  { swapiData.passengers && <p>passengers: {swapiData.passengers}</p> }
+                </div>
+              }
             </div>
           </motion.div>
 

@@ -19,6 +19,6 @@ export interface ISwapiData{
     manufacturer?: string;
     //person
     gender?: string;
-    hairColor?: string;
+    mass?: string;
     height?: string;
 }

@@ -4,12 +4,11 @@ import HText from "../shared/HText";
 import Picture from "./Picture";
 import axios from "axios";
 import { useState } from "react";
-
-
 import { Canvas } from '@react-three/fiber'
-
-
 import Mars from './Mars'
+
+const NASA_API_URL = import.meta.env.VITE_NASA_API_URL;
+ 
 
 type Props = {
   setSelectedPage: (value: SelectedPage) => void;
@@ -19,7 +18,7 @@ const Nasa = ({ setSelectedPage }: Props) => {
   const [marsPictures, setMarsPictures] = useState([]);
 
   async function getMarsPictures(){
-    const response = await axios.get(`http://localhost:3001/api/nasa/marsRandomPictures`);
+    const response = await axios.get(NASA_API_URL);
     setMarsPictures(response.data.data);
   }
 
