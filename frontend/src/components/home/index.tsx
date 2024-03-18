@@ -37,7 +37,8 @@ function Home({ setSelectedPage }: Props) {
 
                         <p className='mt-8 text-sm'>
                             Welcome to the NASA and StarWars APIs test website, the objective of this website is to showcase my abilities 
-                            by creating a backend with NodeJS Express and Typescript that makes calls to the NASA and Stwars public APIs.
+                            by creating a backend with NodeJS Express and Typescript that makes calls to the NASA and Starwars public APIs you can check 
+                            the <a href="http://localhost:3001/api-docs/public/">swagger url</a> to see the endpoints.
                             For the frontend I used React Typescript and Threejs for the graphics.
                         </p>
                     </motion.div>

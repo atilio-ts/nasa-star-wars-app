@@ -1,21 +1,24 @@
-/* eslint-disable @typescript-eslint/ban-types */
 export enum SelectedPage {
     Home = "home",
     NASA = "nasa",
     StarWars = "starwars",
 }
-  
-export interface BenefitType {
-    icon: JSX.Element;
-    title: string;
-    description: string;
-}
-  
-export interface PictureInterface {
+
+export interface IPicture{
     id: number;
-    sol: number;
-    camera: Object;
+
     img_src: string;
-    earth_date: string;
-    rover: Object;
+
+}
+
+export interface ISwapiData{
+    name: string;
+    //starship
+    model?: string;
+    passengers?: string;
+    manufacturer?: string;
+    //person
+    gender?: string;
+    hairColor?: string;
+    height?: string;
 }

@@ -13,3 +13,13 @@ body,
   font-family: "DM Sans", sans-serif;
   @apply text-gray-500;
 }
+
+a{
+  color: rgb(157 100 13 / var(--tw-text-opacity));
+  font-weight: bold;
+}
+
+a:hover{
+  color: rgb(157 200 13 / var(--tw-text-opacity));
+  font-weight: bold;
+}

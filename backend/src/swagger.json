@@ -51,17 +51,26 @@
 				}
 			}
 		},
-		"/starWars/starships": {
+		"/starWars/search": {
 			"get": {
 				"tags": [
 					"StarWars"
 				],
-				"description": "Returns data of the starship",
+				"description": "Returns data of the starship or character",
 				"parameters": [
 					{
 						"in": "query",
+						"name": "type",
+						"description": "Starship or character",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
 						"name": "name",
-						"description": "Starship name",
+						"description": "Starship or character name",
 						"required": true,
 						"schema": {
 							"type": "string"
@@ -70,7 +79,7 @@
 				],
 				"responses": {
 					"200": {
-						"description": "Starship data",
+						"description": "Starship or character data",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -83,7 +92,7 @@
 										"data": {
 											"type": "array",
 											"items":{
-												"$ref": "#/components/schemas/StarshipDataArray"
+												"$ref": "#/components/schemas/SwapiData"
 											}
 										}
 									}
@@ -120,7 +129,7 @@
 					}
 				}
 			},
-			"StarshipDataArray": {
+			"SwapiData": {
 				"type": "object",
 				"properties": {
 					"name": {
@@ -129,58 +138,19 @@
 					"model": {
 						"type": "string"
 					},
-					"manufacturer": {
-						"type": "string"
-					},
-					"cost_in_credits": {
-						"type": "string"
-					},
-					"length": {
-						"type": "string"
-					},
-					"max_atmosphering_speed": {
-						"type": "string"
-					},
-					"crew": {
-						"type": "string"
-					},
 					"passengers": {
 						"type": "string"
 					},
-					"cargo_capacity": {
+					"manufacturer": {
 						"type": "string"
 					},
-					"consumables": {
+					"gender": {
 						"type": "string"
 					},
-					"hyperdrive_rating": {
+					"hairColor": {
 						"type": "string"
 					},
-					"MGLT": {
-						"type": "string"
-					},
-					"starship_class": {
-						"type": "string"
-					},
-					"pilots": {
-						"type": "array",
-						"items":{
-						  "type": "string"
-						}
-					},
-					"films": {
-						"type": "array",
-						"items":{
-						  "type": "string"
-						}
-					},
-					"created": {
-						"type": "number"
-					},
-					"edited": {
-						"type": "number"
-					},
-					"url":{
+					"height": {
 						"type": "string"
 					}
 				}

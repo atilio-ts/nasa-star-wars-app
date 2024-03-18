@@ -1,4 +1,4 @@
-import { SelectedPage, PictureInterface } from "@/types";
+import { SelectedPage, IPicture } from "@/types";
 import { motion } from "framer-motion";
 import HText from "../shared/HText";
 import Picture from "./Picture";
@@ -46,10 +46,10 @@ const Nasa = ({ setSelectedPage }: Props) => {
               Welcome to the NASA API section, here by clicking the mars icon you can access to the Image data gathered 
               by NASA's Curiosity, Opportunity, and Spirit rovers on Mars. Every time you click on Mars you'll get 
               randomized images from this endpoint. <br/>
-              The mars sphere component was made using <a href="https://www.npmjs.com/package/@react-three/fiber">react-three-fiber</a> 
-              that is a ThreeJs wrapper for react, rocky soil textures from <a href="https://polyhaven.com/a/rocky_trail_02">polyhaven</a> 
-              and the stars and orbit animation are from <a href="https://www.npmjs.com/package/@react-three/drei/v/9.0.1">react-three-drei</a> 
-              an useful animation and component library.
+              The mars sphere component was made using <a href="https://www.npmjs.com/package/@react-three/fiber">react-three-fiber</a> that
+              is a ThreeJs wrapper for react, rocky soil textures from <a href="https://polyhaven.com/a/rocky_trail_02">polyhaven</a> and 
+              the stars and orbit animation are from <a href="https://www.npmjs.com/package/@react-three/drei/v/9.0.1">react-three-drei</a> an 
+              useful animation and component library.
             </p>
           </div>
           <div className="relative mt-16 basis-1/2 md:mt-0 w-full before:absolute before:-bottom-20" onClick={getMarsPictures}>
@@ -61,7 +61,7 @@ const Nasa = ({ setSelectedPage }: Props) => {
         </motion.div>
         <div className="mt-10 h-[353px] w-full overflow-x-auto overflow-y-hidden">
           <ul className="w-[2800px] whitespace-nowrap">
-            {marsPictures.map((item: PictureInterface, index) => (
+            {marsPictures.map((item: IPicture, index) => (
               <Picture
                 key={`${item.id}-${index}`}
                 image={item.img_src}
