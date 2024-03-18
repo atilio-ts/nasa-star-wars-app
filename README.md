@@ -1,4 +1,4 @@
-# Bank App Assignment
+# Nasa Starwars App Asignment
 
 ## Table of contents
 
