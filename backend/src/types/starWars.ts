@@ -1,4 +1,4 @@
-export interface SpaceshipData {
+export interface StarshipData {
     name: string;
     model: string;
     manufacturer: string;

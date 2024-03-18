@@ -12,27 +12,16 @@
 		}
 	],
 	"paths": {
-		"/accounts/": {
-			"post": {
+		"/nasa/marsRandomPictures": {
+			"get": {
 				"tags": [
-					"Account"
+					"NASA"
 				],
-				"summary": "Create an account from the provided data",
-				"description": "Returns created account id",
-				"requestBody": {
-					"description": "Account data",
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/CreateAccount"
-							}
-						}
-					}
-				},
+				"summary": "Get pictures from the mars explorer",
+				"description": "Returns pictures from the mars explorer",
 				"responses": {
 					"200": {
-						"description": "Reservation data obtained successfully",
+						"description": "Mars pictures array",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -43,11 +32,7 @@
 											"example": "success"
 										},
 										"data": {
-											"type": "object",
-											"$ref": "#/components/schemas/AccountId"
-										},
-										"message": {
-											"type": "string"
+											"$ref": "#/components/schemas/MarsPicturesArray"
 										}
 									}
 								}
@@ -56,12 +41,6 @@
 					},
 					"400": {
 						"description": "Some params were not received or are incorrect"
-					},
-					"401": {
-						"description": "Access token is missing or invalid"
-					},
-					"403": {
-						"description": "Unauthorized Access"
 					},
 					"404": {
 						"description": "The resource was not found on the server"
@@ -72,38 +51,26 @@
 				}
 			}
 		},
-		"/accounts/{accountNumber}/transactions/": {
-			"post": {
+		"/starWars/starships": {
+			"get": {
 				"tags": [
-					"Transactions"
+					"StarWars"
 				],
-				"summary": "Creates a transaction for the selected account",
-				"description": "Returns the current account data after the transaction",
+				"description": "Returns data of the starship",
 				"parameters": [
 					{
-						"in": "path",
-						"name": "accountNumber",
-						"description": "Number of the account",
+						"in": "query",
+						"name": "name",
+						"description": "Starship name",
 						"required": true,
 						"schema": {
-							"type": "number"
+							"type": "string"
 						}
 					}
 				],
-				"requestBody": {
-					"description": "Account data",
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/Transaction"
-							}
-						}
-					}
-				},
 				"responses": {
 					"200": {
-						"description": "Tramsaction created successfully",
+						"description": "Starship data",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -114,11 +81,10 @@
 											"example": "success"
 										},
 										"data": {
-											"type": "object",
-											"$ref": "#/components/schemas/Account"
-										},
-										"message": {
-											"type": "string"
+											"type": "array",
+											"items":{
+												"$ref": "#/components/schemas/StarshipDataArray"
+											}
 										}
 									}
 								}
@@ -127,12 +93,6 @@
 					},
 					"400": {
 						"description": "Some params were not received or are incorrect"
-					},
-					"401": {
-						"description": "Access token is missing or invalid"
-					},
-					"403": {
-						"description": "Unauthorized Access"
 					},
 					"404": {
 						"description": "The resource was not found on the server"
@@ -146,59 +106,82 @@
 	},
 	"components": {
 		"schemas": {
-            "AccountId": {
-				"type": "object",
-				"properties": {
-					"id": {
-						"type": "number"
+            "MarsPicturesArray": {
+				"type": "array",
+				"items":{
+					"type": "object",
+					"properties": {
+						"id": {
+							"type": "number"
+						},
+						"img_src": {
+							"type": "string"
+						}
 					}
 				}
 			},
-			"CreateAccount": {
+			"StarshipDataArray": {
 				"type": "object",
 				"properties": {
 					"name": {
 						"type": "string"
 					},
-					"accountNumber": {
-						"type": "number"
-					},
-					"initialBalance": {
-						"type": "number"
-					}
-				}
-			},
-            "Account": {
-				"type": "object",
-				"properties": {
-                    "id": {
-                        "type": "number"
-                    },
-					"name": {
+					"model": {
 						"type": "string"
 					},
-					"accountNumber": {
+					"manufacturer": {
+						"type": "string"
+					},
+					"cost_in_credits": {
+						"type": "string"
+					},
+					"length": {
+						"type": "string"
+					},
+					"max_atmosphering_speed": {
+						"type": "string"
+					},
+					"crew": {
+						"type": "string"
+					},
+					"passengers": {
+						"type": "string"
+					},
+					"cargo_capacity": {
+						"type": "string"
+					},
+					"consumables": {
+						"type": "string"
+					},
+					"hyperdrive_rating": {
+						"type": "string"
+					},
+					"MGLT": {
+						"type": "string"
+					},
+					"starship_class": {
+						"type": "string"
+					},
+					"pilots": {
+						"type": "array",
+						"items":{
+						  "type": "string"
+						}
+					},
+					"films": {
+						"type": "array",
+						"items":{
+						  "type": "string"
+						}
+					},
+					"created": {
 						"type": "number"
 					},
-					"currentBalance": {
+					"edited": {
 						"type": "number"
 					},
-					"initialBalance": {
-						"type": "number"
-					}
-				}
-			},
-			"Transaction": {
-				"type": "object",
-				"properties": {
-					"amount": {
-						"type": "number"
-					},
-                    "type": {
-						"enum": [
-							"DEPOSIT",
-							"WITHDRAWAL"
-						]
+					"url":{
+						"type": "string"
 					}
 				}
 			}

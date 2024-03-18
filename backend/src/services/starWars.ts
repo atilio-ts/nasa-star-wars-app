@@ -1,19 +1,21 @@
 import axios from 'axios';
-import { SpaceshipData } from '../types/starWars';
+import { StarshipData } from '../types/starWars';
 
 const STAR_WARS_API_URL = process.env.STAR_WARS_API_URL ?? "";
 
 export default class StarWarsService {
   
   /**
-   * Retrieves information about the Millennium Falcon.
+   * Retrieves information about starships.
    *
-   * @return {Promise<SpaceshipData>} - A promise that resolves with the Millennium Falcon Data.
+   * @return {Promise<StarshipData>} - A promise that resolves with the data of the starship.
    */
-  static async getMillenniumFalconData(): Promise<SpaceshipData>{
+  static async getStarshipData(name: string): Promise<Array<StarshipData>>{
     try{
-      const response = await axios.get(STAR_WARS_API_URL);
-      return response?.data as SpaceshipData;
+      
+      const response = await axios.get(`${STAR_WARS_API_URL}?search=${name}`);
+      console.log(response?.data);
+      return response?.data.results as Array<StarshipData>;
     }catch(error){
       throw(error);
     }
