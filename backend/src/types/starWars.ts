@@ -6,6 +6,11 @@ export interface SwapiData {
     manufacturer?: string;
     //person
     gender?: string;
-    hairColor?: string;
+    mass?: string;
     height?: string;
+}
+
+export enum searchReqType{
+    STARSHIPS = 'starships',
+    PEOPLE = 'people'
 }

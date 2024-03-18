@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SwapiData } from '../types/starWars';
+import { SwapiData, searchReqType } from '../types/starWars';
 
 const STAR_WARS_API_URL = process.env.STAR_WARS_API_URL ?? "";
 
@@ -14,7 +14,7 @@ export default class StarWarsService {
     try{
       const response = await axios.get(`${STAR_WARS_API_URL}/${type}/?search=${name}`);
       if(response?.data.results[0]){
-        if (type == 'starship')
+        if (type == searchReqType.STARSHIPS)
           return ({
             name: response?.data.results[0].name,
             model: response?.data.results[0].model,
@@ -25,7 +25,7 @@ export default class StarWarsService {
         return ({
           name: response?.data.results[0].name,
           gender: response?.data.results[0].gender,
-          hairColor: response?.data.results[0].hairColor,
+          mass: response?.data.results[0].mass,
           height: response?.data.results[0].height
         } as SwapiData)
       }
