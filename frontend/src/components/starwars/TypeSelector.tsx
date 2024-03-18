@@ -1,6 +1,4 @@
 import { OrbitControls, Stars, useGLTF } from '@react-three/drei';
-import { useFrame } from '@react-three/fiber';
-import { useRef } from 'react';
 
 function Starship() {
   const { scene } = useGLTF("./models/millennium_falcon.glb");
@@ -11,17 +9,14 @@ function Starship() {
 }
 
 function Character() {
-  const scene = useGLTF("./models/bb8.glb");
+  const scene = useGLTF("./models/r2d2.glb");
 
   return (
-    <primitive object={scene} scale={10}/>
+    <primitive object={scene} scale={0.2}/>
   );
 }
 
 export function TypeSelectorStarship(){
-  
-
-
   return (
     <>
       <OrbitControls />
@@ -33,12 +28,12 @@ export function TypeSelectorStarship(){
 }
 
 export function TypeSelectorCharacter(){
-    return (
-      <>
-        <OrbitControls />
-        <Stars />
-        <ambientLight intensity={ 5 } />
-        <Character />
-      </>
-    )
-  }
+  return (
+    <>
+      <OrbitControls />
+      <Stars />
+      <ambientLight intensity={ 5 } />
+      <Character />
+    </>
+  )
+}

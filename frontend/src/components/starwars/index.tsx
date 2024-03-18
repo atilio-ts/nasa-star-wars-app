@@ -125,12 +125,8 @@ const ContactUs = ({ setSelectedPage }: Props) => {
               </p>
             )}
             <div className="w-full before:absolute before:-bottom-20 before:-right-10 before:z-[-1] md:before:content-evolvetext">
-              <div className="py-5 h-64" onClick={()=>setType(searchReqType.STARSHIPS)}>
-                <Canvas style={{ background: "black" }}> 
-                  <TypeSelectorStarship /> 
-                </Canvas>
-              </div>
-              <div className="py-5 h-64" onClick={()=>setType(searchReqType.CHARACTER)}>
+              
+              <div className={`p-1 h-64 ${(searchType == searchReqType.CHARACTER)? "border-solid border-4 border-primary-500":"border-none"}`} onClick={()=>setType(searchReqType.CHARACTER)}>
                 <Canvas style={{ background: "black" }}> 
                   <TypeSelectorCharacter /> 
                 </Canvas>
