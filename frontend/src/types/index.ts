@@ -22,3 +22,8 @@ export interface ISwapiData{
     mass?: string;
     height?: string;
 }
+
+export enum searchReqType{
+    STARSHIPS = 'starships',
+    CHARACTER = 'people'
+}

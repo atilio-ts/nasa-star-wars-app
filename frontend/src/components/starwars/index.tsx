@@ -1,9 +1,10 @@
-import { ISwapiData, SelectedPage } from "@/types";
+import { ISwapiData, SelectedPage, searchReqType } from "@/types";
 import { motion } from "framer-motion";
-import ContactUsPageGraphic from "@/assets/ContactUsPageGraphic.png";
 import HText from "../shared/HText";
 import { useState } from "react";
 import axios from "axios";
+import { TypeSelectorCharacter, TypeSelectorStarship } from "./TypeSelector";
+import { Canvas } from "@react-three/fiber";
 
 const SWAPI_URL = import.meta.env.VITE_SWAPI_URL;
 
@@ -12,19 +13,25 @@ type Props = {
 };
 
 const ContactUs = ({ setSelectedPage }: Props) => {
-  const [searchNameError, setSearchNameError] = useState(false)
   const [searchName, setName] = useState("")
-  const [searchType, setSearchType] = useState("starship")
+  const [searchNameError, setSearchNameError] = useState(false)
+
+  const [searchType, setType] = useState("starship")
+  const [searchTypeError, setSearchTypeError] = useState(false)
+
   const [swapiData, setSwapiData] = useState<ISwapiData>()
 
   async function getStarwarsData(){
-    if(searchName){
-      setSearchNameError(false);
-      setSearchType("starships");
-      const response = await axios.get(`${SWAPI_URL}?type=${searchType}&name=${searchName}`);
-      console.log(response.data.data);
-      setSwapiData(response.data.data);
-    }else setSearchNameError(true);
+    console.log(searchName, searchType)
+    if (!searchName) { setSearchNameError(true); return; }
+    if (!searchType) { setSearchTypeError(true); return; }
+
+    setSearchNameError(false);
+    setSearchTypeError(false);
+
+    const response = await axios.get(`${SWAPI_URL}?type=${searchType}&name=${searchName}`);
+    console.log(response.data.data);
+    setSwapiData(response.data.data);
   }
 
   return (
@@ -48,9 +55,9 @@ const ContactUs = ({ setSelectedPage }: Props) => {
             <span className="text-primary-500">Star wars</span> API
           </HText>
           <p className="my-5">
-            Welcome to the Star wars API section here you can get data from different starships just
-            by typing their name them in the box below or if you want to get information about the 
-            Millenium Falcon just click the ship.
+            Welcome to the Star wars API section here you can get data from different starships and characters 
+            of the series just by typing their name them in the box below and selecting the starship or character logo
+            in the canvas.
           </p>
         </motion.div>
 
@@ -112,12 +119,22 @@ const ContactUs = ({ setSelectedPage }: Props) => {
               visible: { opacity: 1, y: 0 },
             }}
           >
+            {searchTypeError && (
+              <p className="mt-1 text-primary-500 py-5">
+                "Please select a type for your search."
+              </p>
+            )}
             <div className="w-full before:absolute before:-bottom-20 before:-right-10 before:z-[-1] md:before:content-evolvetext">
-              <img
-                className="w-full"
-                alt="contact-us-page-graphic"
-                src={ContactUsPageGraphic}
-              />
+              <div className="py-5 h-64" onClick={()=>setType(searchReqType.STARSHIPS)}>
+                <Canvas style={{ background: "black" }}> 
+                  <TypeSelectorStarship /> 
+                </Canvas>
+              </div>
+              <div className="py-5 h-64" onClick={()=>setType(searchReqType.CHARACTER)}>
+                <Canvas style={{ background: "black" }}> 
+                  <TypeSelectorCharacter /> 
+                </Canvas>
+              </div>
             </div>
           </motion.div>
         </div>
