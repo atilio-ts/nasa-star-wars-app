@@ -1,5 +1,10 @@
 import { OrbitControls, Stars, useGLTF } from '@react-three/drei';
 
+interface IProps{
+  name: string;
+}
+
+
 function Starship() {
   const { scene } = useGLTF("./models/millennium_falcon.glb");
 
@@ -8,13 +13,15 @@ function Starship() {
   );
 }
 
-function Character() {
-  const scene = useGLTF("./models/r2d2.glb");
+function Character({ name }: IProps) {
+  const r2d2Model = useGLTF("./models/r2d2.glb");
+  const groguModel = useGLTF("./models/grogu.glb");
 
   return (
-    <primitive object={scene} scale={0.2}/>
+    <primitive object={(name == "r2-d2") ? r2d2Model.scene:groguModel.scene} scale={5}/>
   );
 }
+
 
 export function TypeSelectorStarship(){
   return (
@@ -27,13 +34,13 @@ export function TypeSelectorStarship(){
   )
 }
 
-export function TypeSelectorCharacter(){
+export function TypeSelectorCharacter(props: IProps){
   return (
     <>
       <OrbitControls />
       <Stars />
       <ambientLight intensity={ 5 } />
-      <Character />
+      <Character {...props}/>
     </>
   )
 }
