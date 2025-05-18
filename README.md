@@ -1,96 +1,29 @@
-# Nasa Starwars App Asignment
+# NASA Star Wars App
 
-We ask that you create and deploy an application using one of the following api’s below.
-With the returned data from the API, we ask that you creatively display the information using an
-interactive three.js canvas. Users should be able to interact with the canvas in some way, for
-instance, moving objects, filtering data, or anything else you can think of. You may use any
-javascript framework you are comfortable with. It is preferred if you use typescript, but not
-necessary. This should be a bit creative on your part. You decide what to do with the data you
-get back from the API.
+An interactive 3D visualization project integrating data from NASA's Open APIs and the Star Wars API (SWAPI), rendered using Three.js. This application allows users to explore and interact with space-themed data in a dynamic, immersive environment.
 
-## Table of contents
+---
 
-#### [Project description](#description)
+## Overview
 
-#### [Scripts](#scripts)
+This project combines real-world astronomical data from NASA and fictional data from the Star Wars universe to create an engaging 3D experience. Users can interact with various celestial objects and Star Wars elements, providing both educational and entertainment value.
 
-<a name="description"></a>
+---
 
-## Project description
+## Features
 
-### 1. API Integration:
+- **API Integration**: Fetches data from NASA's Open APIs and SWAPI.
+- **3D Visualization**: Utilizes Three.js to render interactive 3D models of celestial bodies and Star Wars spacecraft.
+- **User Interaction**: Allows users to navigate through space, select objects, and view detailed information.
+- **Responsive Design**: Ensures compatibility across different devices and screen sizes.
 
-The candidate must choose one of the following APIs for integration:
+---
 
-● NASA Free API: The candidate can choose any endpoint from NASA's API
-available at [NASA Open APIs](https://api.nasa.gov/).
+## Technologies Used
 
-● Star Wars API: The candidate can choose any endpoint from the Star Wars API
-available at [SWAPI](https://swapi.py4e.com/).
+- **Frontend**: React.js, Three.js
+- **Backend**: Node.js, Express.js
+- **APIs**: NASA Open APIs, Star Wars API (SWAPI)
+- **Styling**: CSS3, HTML5
 
-● The candidate should make API requests to retrieve information from the chosen
-API.
-
-### 2. Three.js Implementation:
-
-● The candidate must use Three.js to create a 3D scene.
-
-● - The scene should contain at least one interactive 3D object (e.g., a cube, sphere,
-etc.).
-
-● - The interactive object should respond to user interaction within the canvas, such as
-clicking or hovering.
-
-### 3. User Interaction:
-
-● - User interaction should trigger a response within the scene. For example, clicking on
-an object could change its color or trigger an animation.
-
-### 4. Display of Information:
-
-● The fetched data from the chosen API should be displayed within the Three.js scene in
-some meaningful way. This could be through text rendering, object manipulation, or any
-other creative method.
-
-### 5. Code Quality:
-
-● The code should be well-structured, readable, and follow best practices.
-
-● Comments should be included where necessary to explain complex sections of code or
-provide context.
-
-### 6. Optional Enhancements:
-
-● Candidates are encouraged to implement additional features or enhancements to
-showcase their skills and creativity.
-
-● Examples of enhancements could include adding animations, incorporating additional
-API endpoints, unit testing, optimizing performance, or improving user experience.
-
-<a name="scripts"></a>
-
-## Scripts
-
-### Prerequisites
-
-Install NodeJs version 16.x or superior
-
-### Frontend
-
-    npm install
-    
-    npm run dev
-
-### Backend
-
-    npm install
-    
-    npm run build
-    
-    npm run start - make sure you've executed the build command before
-
-    npm run buildStart
-    
-
-To test the endpoints you can use the swagger file found in: <http://localhost:3001/api-docs/public/> once the backend is up or with the Postman file NasaStarwars.postman_collection.json
-
+---
